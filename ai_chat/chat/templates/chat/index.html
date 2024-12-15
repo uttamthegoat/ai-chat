@@ -69,6 +69,8 @@
           margin-bottom: 10px;
           background-color: #f9f9f9;
           border-radius: 8px;
+          display: flex;
+          flex-direction: column;
           /* max-height: 500px; */
           /* height: calc(100vh - 200px); */
           scroll-behavior: smooth;
@@ -100,15 +102,15 @@
       }
       .user-message {
         background-color: #e3f2fd;
-        align-self: flex-start;
+        align-self: flex-end;
         border: 1px solid #bbdefb;
         margin-left: 5%;
-      }
-      .ai-message {
+    }
+    .ai-message {
         background-color: #ffffff;
-        align-self: flex-end;
-        border: 1px solid #e0e0e0;
         margin-right: 5%;
+        align-self: flex-start;
+        border: 1px solid #e0e0e0;
       }
 
       /* Message Header */
