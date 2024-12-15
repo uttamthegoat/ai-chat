@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .api.ai import AIService
 import markdown
 from django.utils.safestring import mark_safe
@@ -10,6 +10,12 @@ def index(request):
         request.session['chat_history'] = []
     
     if request.method == 'POST':
+        # Check if this is a clear chat request
+        if 'clear_chat' in request.POST:
+            request.session['chat_history'] = []
+            request.session.modified = True
+            return redirect('index')
+            
         user_message = request.POST.get('message', '').strip()
         if user_message:
             # Add user message to history

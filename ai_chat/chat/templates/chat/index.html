@@ -233,11 +233,49 @@
         div.code-toolbar > .toolbar > .toolbar-item > button:hover {
             background: #1976d2;
         }
+
+        .chat-controls {
+            margin-bottom: 15px;
+            text-align: right;
+        }
+
+        .clear-button {
+            padding: 8px 16px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .clear-button:hover {
+            background-color: #c82333;
+        }
+
+        /* For mobile responsiveness */
+        @media (max-width: 600px) {
+            .chat-controls {
+                text-align: center;
+            }
+            
+            .clear-button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="chat-container">
         <h1>AI Chat - by uttamthegoat</h1>
+        <div class="chat-controls">
+            <form method="POST" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" name="clear_chat" class="clear-button">Clear Chat</button>
+            </form>
+        </div>
         <div class="chat-history" id="chatHistory">
             {% for message in chat_history %}
                 <div class="message {% if message.role == 'user' %}user-message{% else %}ai-message{% endif %}">
