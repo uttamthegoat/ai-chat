@@ -21,7 +21,7 @@ class AIService:
     def get_chat_response(self, messages: List[dict]) -> str:
         try:
             response = self.client.chat.completions.create(
-                model='Qwen2.5-Coder-32B-Instruct',
+                model='Qwen2.5-72B-Instruct',
                 messages=messages,
                 temperature=0.1,
                 top_p=0.1
